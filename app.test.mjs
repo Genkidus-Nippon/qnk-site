@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {randomUUID} from 'node:crypto';
-import {createApp} from './api.mjs';
-import {phase,SCHEDULE,emptyData} from './config.mjs';
+import {createApp} from './server.mjs';
+import {phase,SCHEDULE,emptyData} from './server.mjs';
 import {fakeGitHub} from './fake-github.mjs';
 
 const config={adminEmail:'admin@example.com',adminPassword:'test-only-password-123',sessionSecret:'test-only-session-secret-more-than-32',production:false};
@@ -21,6 +21,42 @@ async function fixture(t) {
 }
 const question=()=>({id:randomUUID(),name:'非公開の名前',affiliation:'ICX',grade:'2年',category:'Summary',question:'活動について教えてください'});
 async function login(request){const result=await request('/api/auth/login',{email:config.adminEmail,password:config.adminPassword});assert.equal(result.status,200);return result.cookie.split(';')[0];}
+
+test('複数の観点を保存し、所属・ジャンルと独立して1件ずつ集計する',async t=>{
+  const {request,remote}=await fixture(t),q={...question(),perspectives:['TM','ICX','TM','LCD']};
+  assert.equal((await request('/api/questions',q)).status,200);
+  assert.equal((await request('/api/questions',{...q,perspectives:['LCD','TM','ICX']})).status,200);
+  assert.equal(remote.puts,1);
+  const state=(await request('/api/state')).data;
+  assert.equal(state.total,1);assert.equal(state.affiliation.ICX,1);
+  assert.deepEqual(state.perspectives,{LCD:1,TM:1,BD:0,Mkt:0,F:0,ICX:1,OGX:0,'もろもろ':0});
+  assert.equal(JSON.stringify(state).includes(q.name),false);
+  const cookie=await login(request);
+  assert.deepEqual((await request('/api/admin',undefined,cookie)).data.questions[0].perspectives,['LCD','TM','ICX']);
+  assert.equal((await request('/api/questions',{...q,perspectives:['OGX']})).status,409);
+  const answer={action:'answer',questionId:q.id,category:'Vision＆Misson',question:'公開する質問',answer:'回答です'};
+  assert.equal((await request('/api/admin',answer,cookie)).status,200);
+  assert.equal((await request('/api/admin',{...answer,answer:'更新した回答'},cookie)).status,200);
+  assert.equal((await request('/api/admin',{...answer,action:'external',questionId:undefined},cookie)).status,200);
+  assert.deepEqual((await request('/api/state')).data.perspectives,state.perspectives);
+});
+
+test('不正・空の観点は保存せず、追加前の質問を維持する',async t=>{
+  const {request,remote,store}=await fixture(t);
+  // 観点欄がない旧データは移行せず読み込める。
+  const legacy=question();await store.mutate(data=>data.questions.push(legacy));
+  assert.equal((await request('/api/state')).data.total,1);
+  assert.deepEqual(Object.values((await request('/api/state')).data.perspectives),Array(8).fill(0));
+  const initialPuts=remote.puts;
+  for(const perspectives of [[],null,'TM',['OTHER'],['TM',123],Array(9).fill('TM')]){
+    assert.equal((await request('/api/questions',{...question(),perspectives})).status,400);
+  }
+  assert.equal(remote.puts,initialPuts);
+  assert.equal((await request('/api/questions',{...question(),affiliation:'OGX',perspectives:['BD','Mkt','F','OGX','もろもろ']})).status,200);
+  const state=(await request('/api/state')).data;
+  assert.equal(state.total,2);assert.equal(state.affiliation.ICX,1);assert.equal(state.affiliation.OGX,1);
+  assert.deepEqual(state.perspectives,{LCD:0,TM:0,BD:1,Mkt:1,F:1,ICX:0,OGX:1,'もろもろ':1});
+});
 
 test('指定日時の前後で版・終了を判定',()=>{
   for(const [time,before,after] of [[SCHEDULE.second,1,2],[SCHEDULE.third,2,3],[SCHEDULE.end,3,0]]){assert.equal(phase(time-1),before);assert.equal(phase(time),after);}

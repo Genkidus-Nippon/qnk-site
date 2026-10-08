@@ -1,4 +1,5 @@
 export const CATEGORIES = Object.freeze(['Summary','Vision＆Misson','Goal＆Isse','Direction Analysis','Current Anlysis','Strategy','Personality','Appendix','もろもろ']);
+export const PERSPECTIVES = Object.freeze(['LCD','TM','BD','Mkt','F','ICX','OGX','もろもろ']);
 export const GRADES = Object.freeze(['1年','2年','3年','4年','大学院','その他']);
 export const FIRST_URL = 'https://drive.google.com/file/d/1o19JfD3iWelpRjefFSz7JlY-iQ7SeVdX/view?usp=drive_link';
 export const SCHEDULE = Object.freeze({

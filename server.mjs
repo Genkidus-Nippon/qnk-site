@@ -6,6 +6,7 @@ import {resolve} from 'node:path';
 
 // ----- config.mjs -----
 export const CATEGORIES = Object.freeze(['Summary','Vision＆Misson','Goal＆Isse','Direction Analysis','Current Anlysis','Strategy','Personality','Appendix','もろもろ']);
+export const PERSPECTIVES = Object.freeze(['LCD','TM','BD','Mkt','F','ICX','OGX','もろもろ']);
 export const GRADES = Object.freeze(['1年','2年','3年','4年','大学院','その他']);
 export const FIRST_URL = 'https://drive.google.com/file/d/1o19JfD3iWelpRjefFSz7JlY-iQ7SeVdX/view?usp=drive_link';
 export const SCHEDULE = Object.freeze({
@@ -121,6 +122,13 @@ function text(value,max,label) {
   return value.trim();
 }
 function category(value) {if(!CATEGORIES.includes(value))fail(400,'質問・提言の種類を確認してください。');return value;}
+function selectedPerspectives(value){return PERSPECTIVES.filter(p=>Array.isArray(value)&&value.includes(p));}
+function perspectives(value){
+  // 旧画面からの送信と、観点のない既存データも引き続き扱う。
+  if(value===undefined)return [];
+  if(!Array.isArray(value)||!value.length||value.length>PERSPECTIVES.length||value.some(p=>!PERSPECTIVES.includes(p)))fail(400,'質問の観点を1つ以上選択してください。');
+  return selectedPerspectives(value);
+}
 function prune(data,now){data.sessions=data.sessions.filter(s=>s.expiresAt>now);}
 async function body(req) {
   if(!/^application\/json(?:;|$)/i.test(req.headers['content-type']||''))fail(415,'送信形式を確認してください。');
@@ -192,9 +200,9 @@ export function createApp({store,config,publicDir,now=Date.now}) {
       }
       if(path==='/api/state' && req.method==='GET') {
         const {data}=await store.read();const time=now(),edition=phase(time);
-        const affiliation={ICX:0,OGX:0},grade=Object.fromEntries(GRADES.map(g=>[g,0]));
-        for(const q of data.questions){affiliation[q.affiliation]++;grade[q.grade]++;}
-        json(res,200,{now:time,edition,url:edition?(data.editions[edition]||''):'',total:data.questions.length,affiliation,grade});return;
+        const affiliation={ICX:0,OGX:0},grade=Object.fromEntries(GRADES.map(g=>[g,0])),perspectiveCounts=Object.fromEntries(PERSPECTIVES.map(p=>[p,0]));
+        for(const q of data.questions){affiliation[q.affiliation]++;grade[q.grade]++;for(const p of selectedPerspectives(q.perspectives))perspectiveCounts[p]++;}
+        json(res,200,{now:time,edition,url:edition?(data.editions[edition]||''):'',total:data.questions.length,affiliation,grade,perspectives:perspectiveCounts});return;
       }
       if(path==='/api/answers' && req.method==='GET') {
         if(!phase(now())){json(res,200,{answers:[]});return;}
@@ -207,12 +215,12 @@ export function createApp({store,config,publicDir,now=Date.now}) {
         const input=await body(req);
         if(typeof input.id!=='string' || !/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(input.id))fail(400,'送信IDを確認してください。');
         if(!['ICX','OGX'].includes(input.affiliation)||!GRADES.includes(input.grade))fail(400,'所属と学年を確認してください。');
-        const q={id:input.id,name:text(input.name,100,'名前'),affiliation:input.affiliation,grade:input.grade,category:category(input.category),question:text(input.question,5000,'質問・提言'),created_at:now()};
+        const q={id:input.id,name:text(input.name,100,'名前'),affiliation:input.affiliation,grade:input.grade,category:category(input.category),perspectives:perspectives(input.perspectives),question:text(input.question,5000,'質問・提言'),created_at:now()};
         await store.mutate(data=>{
           // 受付終了直前に待ち行列へ入ったリクエストも、保存時に再判定。
           if(!phase(now()))fail(403,'質問・提言の受付は終了しました。');
           const existing=data.questions.find(x=>x.id===q.id);
-          if(existing){for(const key of ['name','affiliation','grade','category','question'])if(existing[key]!==q[key])fail(409,'送信IDが重複しています。ページを開き直してください。');return;}
+          if(existing){for(const key of ['name','affiliation','grade','category','question'])if(existing[key]!==q[key])fail(409,'送信IDが重複しています。ページを開き直してください。');if(JSON.stringify(selectedPerspectives(existing.perspectives))!==JSON.stringify(q.perspectives))fail(409,'送信IDが重複しています。ページを開き直してください。');return;}
           prune(data,now());data.questions.push(q);
         });
         json(res,200,{ok:true});return;
