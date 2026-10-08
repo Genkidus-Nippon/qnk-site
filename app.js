@@ -8484,7 +8484,15 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 			}) : r === "home" ? /* @__PURE__ */ (0, A.jsxs)(A.Fragment, { children: [
 				/* @__PURE__ */ (0, A.jsxs)("section", {
 					className: "hero",
-					children: [/* @__PURE__ */ (0, A.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, A.jsx)("img", {
+						className: "hero-background",
+						src: "/kihara.jpg",
+						alt: "",
+						"aria-hidden": "true",
+						width: 1108,
+						height: 1477,
+						decoding: "async"
+					}), /* @__PURE__ */ (0, A.jsxs)("div", {
 						className: "hero-copy",
 						children: [
 							/* @__PURE__ */ (0, A.jsxs)("h1", { children: ["QnKへようこそ", /* @__PURE__ */ (0, A.jsx)("span", {
@@ -8511,9 +8519,6 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 								children: ["質問・提言と回答を見る ", /* @__PURE__ */ (0, A.jsx)("span", { children: "↓" })]
 							})
 						]
-					}), /* @__PURE__ */ (0, A.jsx)("div", {
-						className: "hero-art",
-						children: /* @__PURE__ */ (0, A.jsx)(ye, {})
 					})]
 				}),
 				/* @__PURE__ */ (0, A.jsxs)("section", {
@@ -8536,6 +8541,10 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 										children: /* @__PURE__ */ (0, A.jsx)(S, { size: 24 })
 									}),
 									/* @__PURE__ */ (0, A.jsx)("h3", { children: pe(b) }),
+									/* @__PURE__ */ (0, A.jsx)("p", {
+										className: "card-caption",
+										children: "ぜひよんでね"
+									}),
 									/* @__PURE__ */ (0, A.jsx)("div", {
 										className: "card-bottom",
 										children: /* @__PURE__ */ (0, A.jsx)("span", {
@@ -8554,6 +8563,10 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 										children: /* @__PURE__ */ (0, A.jsx)(ie, { size: 24 })
 									}),
 									/* @__PURE__ */ (0, A.jsxs)("h3", { children: [/* @__PURE__ */ (0, A.jsx)("span", { children: "みんなからの" }), /* @__PURE__ */ (0, A.jsx)("span", { children: "質問・提言ください" })] }),
+									/* @__PURE__ */ (0, A.jsx)("p", {
+										className: "card-caption",
+										children: "参考にさせてください"
+									}),
 									/* @__PURE__ */ (0, A.jsx)("div", {
 										className: "card-bottom",
 										children: /* @__PURE__ */ (0, A.jsx)("span", {
@@ -8572,6 +8585,10 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 										children: /* @__PURE__ */ (0, A.jsx)(re, { size: 24 })
 									}),
 									/* @__PURE__ */ (0, A.jsx)("h3", { children: "木原からの回答" }),
+									/* @__PURE__ */ (0, A.jsx)("p", {
+										className: "card-caption",
+										children: "真心こめて回答してます"
+									}),
 									/* @__PURE__ */ (0, A.jsx)("div", {
 										className: "card-bottom",
 										children: /* @__PURE__ */ (0, A.jsx)("span", {
@@ -8587,7 +8604,7 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 				/* @__PURE__ */ (0, A.jsxs)("section", {
 					className: "timeline",
 					children: [
-						/* @__PURE__ */ (0, A.jsx)("div", { children: /* @__PURE__ */ (0, A.jsx)("h2", { children: "Applicationの変遷は以下です" }) }),
+						/* @__PURE__ */ (0, A.jsx)("div", { children: /* @__PURE__ */ (0, A.jsx)("h2", { children: "Application公開期日です" }) }),
 						/* @__PURE__ */ (0, A.jsxs)("ol", { children: [
 							/* @__PURE__ */ (0, A.jsxs)("li", {
 								className: s?.edition === 1 ? "active" : "",

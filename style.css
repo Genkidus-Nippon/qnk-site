@@ -32,3 +32,25 @@
 
 .hero-line{display:block;text-wrap:balance}.action-card.question h3>span{display:block;white-space:nowrap}
 .hero-description{text-wrap:balance}@media(max-width:700px){.card-bottom>.round-arrow{display:grid}}
+
+/* 写真をホームの背景へ。文字の後ろに濃いグラデーションを重ねる。 */
+.hero{position:relative;isolation:isolate;overflow:hidden;max-width:none;margin:0;display:flex;align-items:center;min-height:660px;padding:64px max(40px,calc((100vw - 1080px)/2));color:#fffaf0;background:#26372c;gap:0}
+.hero-background{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,32,24,.91) 0%,rgba(20,32,24,.83) 34%,rgba(20,32,24,.47) 58%,rgba(20,32,24,.1) 100%)}
+.hero-copy{max-width:570px;width:100%;text-shadow:0 2px 12px #0d170f66}
+.hero h1{font-size:38px;color:#fffaf0;margin:0 0 26px}
+.hero .title-dot{color:#f0be85}
+.hero-sub{font-size:clamp(29px,2.8vw,38px);color:#fffaf0;line-height:1.6}
+.hero-description{font-size:17px;line-height:1.95;color:#fffaf0;max-width:470px;margin-top:24px}
+.hero .scroll-link{color:#fffaf0;font-size:12px;margin-top:30px;font-weight:500}
+.hero .scroll-link span{border-color:#fffaf0b3;background:#fffaf00d}
+.hero .scroll-link:hover span{background:#fffaf029}
+.hero .scroll-link:focus-visible{outline-color:#f0be85}
+.explore{padding-top:44px}
+.action-card{gap:0;min-height:253px}
+.action-card .card-top{margin-bottom:20px}
+.action-card .card-caption{font-size:12px;line-height:1.8;margin-top:9px;opacity:1;color:inherit}
+.action-card .card-bottom{margin-top:auto;padding-top:20px}
+@media(max-width:1050px){.hero{padding:55px 35px;min-height:610px}.hero-copy{max-width:520px}.hero h1{font-size:34px}.hero-sub{font-size:32px}.hero-description{font-size:16px}}
+@media(max-width:700px){.hero{min-height:690px;padding:36px 24px;align-items:flex-end}.hero-background{object-position:center 40%}.hero::before{background:linear-gradient(180deg,rgba(18,29,22,.1) 0%,rgba(18,29,22,.15) 22%,rgba(18,29,22,.65) 43%,rgba(18,29,22,.94) 72%,rgba(18,29,22,.96) 100%)}.hero-copy{text-align:center;max-width:440px;margin:0 auto}.hero h1{font-size:30px;margin:0 0 20px}.hero-sub{font-size:27px;line-height:1.65}.hero-description{font-size:15px;line-height:1.9;margin-top:18px}.hero .scroll-link{margin-top:24px}.explore{padding-top:32px}.action-card{min-height:184px;padding:23px}.action-card .card-top{margin-bottom:14px}.action-card h3,.action-card.question h3{font-size:21px;padding-right:30px}.action-card .card-caption{font-size:11px;padding-right:32px;margin-top:7px}.action-card .card-bottom{padding-top:0}}
+.action-card .card-bottom>.round-arrow{display:grid}
