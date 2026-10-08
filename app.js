@@ -8320,7 +8320,7 @@ function ve({ onLoggedIn: e }) {
 			}),
 			/* @__PURE__ */ (0, A.jsx)("p", {
 				className: "small",
-				children: "権限のないアカウントでは質問内容を閲覧できません。"
+				children: "権限のないアカウントでは質問・提言の内容を閲覧できません。"
 			})
 		]
 	});
@@ -8328,158 +8328,13 @@ function ve({ onLoggedIn: e }) {
 //#endregion
 //#region outputs/QnK.tsx
 function ye() {
-	return /* @__PURE__ */ (0, A.jsxs)("svg", {
-		className: "landscape",
-		viewBox: "0 0 560 460",
-		role: "img",
-		"aria-label": "柔らかな太陽の光と緑の丘、質問を交わすふきだし",
-		children: [
-			/* @__PURE__ */ (0, A.jsxs)("defs", { children: [/* @__PURE__ */ (0, A.jsxs)("linearGradient", {
-				id: "sun",
-				x2: "1",
-				y2: "1",
-				children: [/* @__PURE__ */ (0, A.jsx)("stop", { stopColor: "#f8bd64" }), /* @__PURE__ */ (0, A.jsx)("stop", {
-					offset: "1",
-					stopColor: "#f3a356"
-				})]
-			}), /* @__PURE__ */ (0, A.jsxs)("linearGradient", {
-				id: "hill",
-				x2: "0",
-				y2: "1",
-				children: [/* @__PURE__ */ (0, A.jsx)("stop", { stopColor: "#cdd5b9" }), /* @__PURE__ */ (0, A.jsx)("stop", {
-					offset: "1",
-					stopColor: "#a9bd9c"
-				})]
-			})] }),
-			/* @__PURE__ */ (0, A.jsx)("ellipse", {
-				cx: "292",
-				cy: "392",
-				rx: "221",
-				ry: "26",
-				fill: "#e9decb"
-			}),
-			/* @__PURE__ */ (0, A.jsx)("circle", {
-				cx: "302",
-				cy: "203",
-				r: "162",
-				fill: "#f9ead0"
-			}),
-			/* @__PURE__ */ (0, A.jsx)("circle", {
-				cx: "330",
-				cy: "167",
-				r: "81",
-				fill: "url(#sun)"
-			}),
-			/* @__PURE__ */ (0, A.jsx)("g", {
-				stroke: "#e5aa64",
-				strokeWidth: "3",
-				strokeLinecap: "round",
-				children: /* @__PURE__ */ (0, A.jsx)("path", { d: "M330 58v-15M438 165h17M250 89l-11-11M410 89l11-11M228 162h-16" })
-			}),
-			/* @__PURE__ */ (0, A.jsx)("path", {
-				d: "M68 368c61-113 142-176 224-102 67 60 115 11 195 102Z",
-				fill: "#e6c8a0"
-			}),
-			/* @__PURE__ */ (0, A.jsx)("path", {
-				d: "M75 382c50-47 110-61 173-24 80-117 187-106 239 24Z",
-				fill: "url(#hill)"
-			}),
-			/* @__PURE__ */ (0, A.jsx)("path", {
-				d: "M264 382c-29-20-53-34-77-44",
-				fill: "none",
-				stroke: "#f7f0db",
-				strokeWidth: "13"
-			}),
-			/* @__PURE__ */ (0, A.jsxs)("g", {
-				fill: "#fffcf6",
-				children: [
-					/* @__PURE__ */ (0, A.jsx)("rect", {
-						x: "92",
-						y: "127",
-						width: "157",
-						height: "109",
-						rx: "27"
-					}),
-					/* @__PURE__ */ (0, A.jsx)("path", { d: "m121 226-8 32 47-25" }),
-					/* @__PURE__ */ (0, A.jsx)("rect", {
-						x: "310",
-						y: "242",
-						width: "153",
-						height: "95",
-						rx: "24"
-					}),
-					/* @__PURE__ */ (0, A.jsx)("path", { d: "m420 325 11 32-42-26" })
-				]
-			}),
-			/* @__PURE__ */ (0, A.jsx)("text", {
-				x: "168",
-				y: "199",
-				fill: "#886651",
-				fontFamily: "Georgia,serif",
-				fontSize: "51",
-				textAnchor: "middle",
-				children: "Q"
-			}),
-			/* @__PURE__ */ (0, A.jsx)("text", {
-				x: "387",
-				y: "306",
-				fill: "#78866a",
-				fontFamily: "Georgia,serif",
-				fontSize: "46",
-				textAnchor: "middle",
-				children: "A"
-			}),
-			/* @__PURE__ */ (0, A.jsx)("g", {
-				stroke: "#829270",
-				strokeWidth: "3",
-				fill: "none",
-				strokeLinecap: "round",
-				children: /* @__PURE__ */ (0, A.jsx)("path", { d: "M125 373v-40m0 24c-22 0-27-14-25-22 21-1 25 12 25 22Zm0-11c1-21 17-26 25-23-1 19-15 23-25 23ZM443 381v-34m0 17c-20 0-22-12-21-18 18 0 21 9 21 18Z" })
-			}),
-			/* @__PURE__ */ (0, A.jsxs)("g", {
-				fill: "#f8f1df",
-				children: [
-					/* @__PURE__ */ (0, A.jsx)("ellipse", {
-						cx: "447",
-						cy: "105",
-						rx: "38",
-						ry: "13"
-					}),
-					/* @__PURE__ */ (0, A.jsx)("ellipse", {
-						cx: "424",
-						cy: "103",
-						rx: "15",
-						ry: "19"
-					}),
-					/* @__PURE__ */ (0, A.jsx)("ellipse", {
-						cx: "451",
-						cy: "98",
-						rx: "20",
-						ry: "24"
-					})
-				]
-			}),
-			/* @__PURE__ */ (0, A.jsxs)("g", {
-				fill: "#b59a77",
-				children: [
-					/* @__PURE__ */ (0, A.jsx)("circle", {
-						cx: "79",
-						cy: "282",
-						r: "3"
-					}),
-					/* @__PURE__ */ (0, A.jsx)("circle", {
-						cx: "476",
-						cy: "217",
-						r: "3"
-					}),
-					/* @__PURE__ */ (0, A.jsx)("path", {
-						d: "M273 75h12m-6-6v12",
-						stroke: "#b59a77",
-						strokeWidth: "2"
-					})
-				]
-			})
-		]
+	return /* @__PURE__ */ (0, A.jsx)("img", {
+		className: "portrait",
+		src: "/kihara.jpg",
+		alt: "青いアイセックのパーカーを着て、屋外でポーズを取る木原",
+		width: 1108,
+		height: 1477,
+		decoding: "async"
 	});
 }
 function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
@@ -8532,20 +8387,19 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 			/* @__PURE__ */ (0, A.jsxs)("header", {
 				className: "topbar",
 				children: [
-					/* @__PURE__ */ (0, A.jsxs)("a", {
+					/* @__PURE__ */ (0, A.jsx)("span", {
 						className: "tiny-brand",
-						href: "#home",
-						children: [/* @__PURE__ */ (0, A.jsx)(ce, { size: 19 }), " a little space for your voice"]
+						"aria-hidden": "true"
 					}),
 					/* @__PURE__ */ (0, A.jsxs)("div", {
 						className: "live-stats",
-						"aria-label": "Webから届いた質問の集計",
+						"aria-label": "Webから届いた質問・提言の集計",
 						children: [
 							/* @__PURE__ */ (0, A.jsxs)("span", {
 								className: "stats-caption",
 								children: [
 									/* @__PURE__ */ (0, A.jsx)("i", {}),
-									"みんなの質問 ",
+									"みんなの質問・提言 ",
 									/* @__PURE__ */ (0, A.jsx)("strong", { children: s ? s.total : "—" })
 								]
 							}),
@@ -8595,11 +8449,11 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 								!x && /* @__PURE__ */ (0, A.jsxs)(A.Fragment, { children: [
 									/* @__PURE__ */ (0, A.jsx)("a", {
 										href: "#question",
-										children: "質問する"
+										children: "質問・提言する"
 									}),
 									/* @__PURE__ */ (0, A.jsx)("a", {
 										href: "#answers",
-										children: "回答一覧"
+										children: "木原からの回答"
 									}),
 									/* @__PURE__ */ (0, A.jsx)("a", {
 										href: "#edition",
@@ -8624,12 +8478,7 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 				className: "closing",
 				children: [
 					/* @__PURE__ */ (0, A.jsx)(ce, { size: 54 }),
-					/* @__PURE__ */ (0, A.jsx)("p", {
-						className: "eyebrow",
-						children: "THANK YOU FOR YOUR VOICE"
-					}),
 					/* @__PURE__ */ (0, A.jsx)("h1", { children: "清き一票をありがとう" }),
-					/* @__PURE__ */ (0, A.jsx)("p", { children: "みんなの声が、これからの未来につながります。" }),
 					/* @__PURE__ */ (0, A.jsx)(ye, {})
 				]
 			}) : r === "home" ? /* @__PURE__ */ (0, A.jsxs)(A.Fragment, { children: [
@@ -8638,152 +8487,107 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 					children: [/* @__PURE__ */ (0, A.jsxs)("div", {
 						className: "hero-copy",
 						children: [
-							/* @__PURE__ */ (0, A.jsxs)("span", {
-								className: "eyebrow",
-								children: [/* @__PURE__ */ (0, A.jsx)("span", {}), " QUESTIONS & KNOWLEDGE"]
-							}),
 							/* @__PURE__ */ (0, A.jsxs)("h1", { children: ["QnKへようこそ", /* @__PURE__ */ (0, A.jsx)("span", {
 								className: "title-dot",
 								children: "。"
 							})] }),
 							/* @__PURE__ */ (0, A.jsxs)("p", {
 								className: "hero-sub",
-								children: [
-									"想いを聞いて、",
-									/* @__PURE__ */ (0, A.jsx)("br", {}),
-									"未来を知る。"
-								]
+								children: [/* @__PURE__ */ (0, A.jsx)("span", {
+									className: "hero-line",
+									children: "2728termを木原と一緒に"
+								}), /* @__PURE__ */ (0, A.jsx)("span", {
+									className: "hero-line",
+									children: "作りませんか？"
+								})]
 							}),
-							/* @__PURE__ */ (0, A.jsxs)("p", {
+							/* @__PURE__ */ (0, A.jsx)("p", {
 								className: "hero-description",
-								children: [
-									"小さな疑問も、大きな想いも。",
-									/* @__PURE__ */ (0, A.jsx)("br", {}),
-									"あなたの「聞きたい」を、ここでつなごう。"
-								]
+								children: "満足と達成を通して、PnFに近づく組織を作りましょう。"
 							}),
 							/* @__PURE__ */ (0, A.jsxs)("a", {
 								href: "#explore",
 								className: "scroll-link",
-								children: ["ゆっくり、見ていってね ", /* @__PURE__ */ (0, A.jsx)("span", { children: "↓" })]
+								children: ["質問・提言と回答を見る ", /* @__PURE__ */ (0, A.jsx)("span", { children: "↓" })]
 							})
 						]
-					}), /* @__PURE__ */ (0, A.jsxs)("div", {
+					}), /* @__PURE__ */ (0, A.jsx)("div", {
 						className: "hero-art",
-						children: [/* @__PURE__ */ (0, A.jsx)(ye, {}), /* @__PURE__ */ (0, A.jsx)("span", {
-							className: "art-caption",
-							children: "a question is where it all begins."
-						})]
+						children: /* @__PURE__ */ (0, A.jsx)(ye, {})
 					})]
 				}),
 				/* @__PURE__ */ (0, A.jsxs)("section", {
 					className: "explore",
 					id: "explore",
-					children: [
-						/* @__PURE__ */ (0, A.jsxs)("div", {
-							className: "section-head",
-							children: [/* @__PURE__ */ (0, A.jsxs)("div", { children: [/* @__PURE__ */ (0, A.jsx)("span", {
-								className: "eyebrow",
-								children: "TAKE A LITTLE STEP"
-							}), /* @__PURE__ */ (0, A.jsx)("h2", { children: "今日は、どこから？" })] }), /* @__PURE__ */ (0, A.jsx)("p", { children: "知ることから、はじまる一歩。" })]
-						}),
-						/* @__PURE__ */ (0, A.jsxs)("div", {
-							className: "action-grid",
-							children: [
-								/* @__PURE__ */ (0, A.jsxs)("a", {
-									className: "action-card edition",
-									href: s?.url || (b === 1 ? "https://drive.google.com/file/d/1o19JfD3iWelpRjefFSz7JlY-iQ7SeVdX/view?usp=drive_link" : "#edition"),
-									target: s?.url || b === 1 ? "_blank" : void 0,
-									rel: "noreferrer",
-									children: [
-										/* @__PURE__ */ (0, A.jsxs)("div", {
-											className: "card-top",
-											children: [/* @__PURE__ */ (0, A.jsx)(S, { size: 24 }), /* @__PURE__ */ (0, A.jsx)("span", { children: "01 / READ" })]
-										}),
-										/* @__PURE__ */ (0, A.jsxs)("h3", { children: [pe(b), "はこちら"] }),
-										/* @__PURE__ */ (0, A.jsxs)("p", { children: [
-											"考えやビジョンを、",
-											/* @__PURE__ */ (0, A.jsx)("br", {}),
-											"じっくり読んでみる。"
-										] }),
-										/* @__PURE__ */ (0, A.jsxs)("div", {
-											className: "card-bottom",
-											children: [/* @__PURE__ */ (0, A.jsx)("span", { children: "資料を読む" }), /* @__PURE__ */ (0, A.jsx)("span", {
-												className: "round-arrow",
-												children: /* @__PURE__ */ (0, A.jsx)(ee, {})
-											})]
+					children: [/* @__PURE__ */ (0, A.jsx)("div", {
+						className: "section-head",
+						children: /* @__PURE__ */ (0, A.jsx)("h2", { children: "みんなの疑問・意見聞かせて！" })
+					}), /* @__PURE__ */ (0, A.jsxs)("div", {
+						className: "action-grid",
+						children: [
+							/* @__PURE__ */ (0, A.jsxs)("a", {
+								className: "action-card edition",
+								href: s?.url || (b === 1 ? "https://drive.google.com/file/d/1o19JfD3iWelpRjefFSz7JlY-iQ7SeVdX/view?usp=drive_link" : "#edition"),
+								target: s?.url || b === 1 ? "_blank" : void 0,
+								rel: "noreferrer",
+								children: [
+									/* @__PURE__ */ (0, A.jsx)("div", {
+										className: "card-top",
+										children: /* @__PURE__ */ (0, A.jsx)(S, { size: 24 })
+									}),
+									/* @__PURE__ */ (0, A.jsx)("h3", { children: pe(b) }),
+									/* @__PURE__ */ (0, A.jsx)("div", {
+										className: "card-bottom",
+										children: /* @__PURE__ */ (0, A.jsx)("span", {
+											className: "round-arrow",
+											children: /* @__PURE__ */ (0, A.jsx)(ee, {})
 										})
-									]
-								}),
-								/* @__PURE__ */ (0, A.jsxs)("a", {
-									className: "action-card question",
-									href: "#question",
-									children: [
-										/* @__PURE__ */ (0, A.jsxs)("div", {
-											className: "card-top",
-											children: [/* @__PURE__ */ (0, A.jsx)(ie, { size: 24 }), /* @__PURE__ */ (0, A.jsx)("span", { children: "02 / ASK" })]
-										}),
-										/* @__PURE__ */ (0, A.jsx)("h3", { children: "質問はこちら" }),
-										/* @__PURE__ */ (0, A.jsxs)("p", { children: [
-											"気になることを、",
-											/* @__PURE__ */ (0, A.jsx)("br", {}),
-											"あなたの言葉で届ける。"
-										] }),
-										/* @__PURE__ */ (0, A.jsxs)("div", {
-											className: "card-bottom",
-											children: [/* @__PURE__ */ (0, A.jsx)("span", { children: "匿名でも大丈夫" }), /* @__PURE__ */ (0, A.jsx)("span", {
-												className: "round-arrow",
-												children: /* @__PURE__ */ (0, A.jsx)(ee, {})
-											})]
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, A.jsxs)("a", {
+								className: "action-card question",
+								href: "#question",
+								children: [
+									/* @__PURE__ */ (0, A.jsx)("div", {
+										className: "card-top",
+										children: /* @__PURE__ */ (0, A.jsx)(ie, { size: 24 })
+									}),
+									/* @__PURE__ */ (0, A.jsxs)("h3", { children: [/* @__PURE__ */ (0, A.jsx)("span", { children: "みんなからの" }), /* @__PURE__ */ (0, A.jsx)("span", { children: "質問・提言ください" })] }),
+									/* @__PURE__ */ (0, A.jsx)("div", {
+										className: "card-bottom",
+										children: /* @__PURE__ */ (0, A.jsx)("span", {
+											className: "round-arrow",
+											children: /* @__PURE__ */ (0, A.jsx)(ee, {})
 										})
-									]
-								}),
-								/* @__PURE__ */ (0, A.jsxs)("a", {
-									className: "action-card answer",
-									href: "#answers",
-									children: [
-										/* @__PURE__ */ (0, A.jsxs)("div", {
-											className: "card-top",
-											children: [/* @__PURE__ */ (0, A.jsx)(re, { size: 24 }), /* @__PURE__ */ (0, A.jsx)("span", { children: "03 / DISCOVER" })]
-										}),
-										/* @__PURE__ */ (0, A.jsx)("h3", { children: "回答一覧はこちら" }),
-										/* @__PURE__ */ (0, A.jsxs)("p", { children: [
-											"みんなの疑問と回答から、",
-											/* @__PURE__ */ (0, A.jsx)("br", {}),
-											"新しい気づきを見つける。"
-										] }),
-										/* @__PURE__ */ (0, A.jsxs)("div", {
-											className: "card-bottom",
-											children: [/* @__PURE__ */ (0, A.jsx)("span", { children: "回答を読む" }), /* @__PURE__ */ (0, A.jsx)("span", {
-												className: "round-arrow",
-												children: /* @__PURE__ */ (0, A.jsx)(ee, {})
-											})]
+									})
+								]
+							}),
+							/* @__PURE__ */ (0, A.jsxs)("a", {
+								className: "action-card answer",
+								href: "#answers",
+								children: [
+									/* @__PURE__ */ (0, A.jsx)("div", {
+										className: "card-top",
+										children: /* @__PURE__ */ (0, A.jsx)(re, { size: 24 })
+									}),
+									/* @__PURE__ */ (0, A.jsx)("h3", { children: "木原からの回答" }),
+									/* @__PURE__ */ (0, A.jsx)("div", {
+										className: "card-bottom",
+										children: /* @__PURE__ */ (0, A.jsx)("span", {
+											className: "round-arrow",
+											children: /* @__PURE__ */ (0, A.jsx)(ee, {})
 										})
-									]
-								})
-							]
-						}),
-						/* @__PURE__ */ (0, A.jsxs)("div", {
-							className: "gentle-note",
-							children: [
-								/* @__PURE__ */ (0, A.jsx)(ce, { size: 19 }),
-								/* @__PURE__ */ (0, A.jsx)("p", { children: "ひとつひとつの質問に、想いを込めて答えていきます。" }),
-								/* @__PURE__ */ (0, A.jsx)("span", { children: "Let's grow together." })
-							]
-						})
-					]
+									})
+								]
+							})
+						]
+					})]
 				}),
 				/* @__PURE__ */ (0, A.jsxs)("section", {
 					className: "timeline",
 					children: [
-						/* @__PURE__ */ (0, A.jsxs)("div", { children: [
-							/* @__PURE__ */ (0, A.jsx)("span", {
-								className: "eyebrow",
-								children: "OUR LITTLE CALENDAR"
-							}),
-							/* @__PURE__ */ (0, A.jsx)("h2", { children: "少しずつ、深く知る。" }),
-							/* @__PURE__ */ (0, A.jsx)("p", { children: "資料は、公開日にあわせて切り替わります。" })
-						] }),
+						/* @__PURE__ */ (0, A.jsx)("div", { children: /* @__PURE__ */ (0, A.jsx)("h2", { children: "Applicationの変遷は以下です" }) }),
 						/* @__PURE__ */ (0, A.jsxs)("ol", { children: [
 							/* @__PURE__ */ (0, A.jsxs)("li", {
 								className: s?.edition === 1 ? "active" : "",
@@ -8808,16 +8612,9 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 				className: "page-content narrow",
 				children: [
 					/* @__PURE__ */ (0, A.jsx)(xe, {}),
-					/* @__PURE__ */ (0, A.jsxs)("div", {
+					/* @__PURE__ */ (0, A.jsx)("div", {
 						className: "page-title",
-						children: [
-							/* @__PURE__ */ (0, A.jsx)("span", {
-								className: "eyebrow",
-								children: "YOUR VOICE MATTERS"
-							}),
-							/* @__PURE__ */ (0, A.jsx)("h1", { children: "聞いてみよう。" }),
-							/* @__PURE__ */ (0, A.jsx)("p", { children: "あなたの疑問が、みんなの気づきになる。" })
-						]
+						children: /* @__PURE__ */ (0, A.jsx)("h1", { children: "質問・提言を届ける" })
 					}),
 					/* @__PURE__ */ (0, A.jsx)(Ce, {
 						afterSend: y,
@@ -8828,16 +8625,9 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 				className: "page-content",
 				children: [
 					/* @__PURE__ */ (0, A.jsx)(xe, {}),
-					/* @__PURE__ */ (0, A.jsxs)("div", {
+					/* @__PURE__ */ (0, A.jsx)("div", {
 						className: "page-title",
-						children: [
-							/* @__PURE__ */ (0, A.jsx)("span", {
-								className: "eyebrow",
-								children: "QUESTIONS, MEET ANSWERS"
-							}),
-							/* @__PURE__ */ (0, A.jsx)("h1", { children: "みんなの質問と回答。" }),
-							/* @__PURE__ */ (0, A.jsx)("p", { children: "ひとつの問いから、少しずつ広がる理解。" })
-						]
+						children: /* @__PURE__ */ (0, A.jsx)("h1", { children: "木原からの回答" })
 					}),
 					/* @__PURE__ */ (0, A.jsxs)("div", {
 						className: "answer-controls",
@@ -8848,13 +8638,13 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 									value: m,
 									onChange: (e) => g(e.target.value),
 									placeholder: "気になる言葉で探す",
-									"aria-label": "質問と回答を検索"
+									"aria-label": "質問・提言と回答を検索"
 								})]
 							}),
 							/* @__PURE__ */ (0, A.jsxs)("select", {
 								value: _,
 								onChange: (e) => v(e.target.value),
-								"aria-label": "質問の種類で絞り込み",
+								"aria-label": "質問・提言の種類で絞り込み",
 								children: [/* @__PURE__ */ (0, A.jsx)("option", { children: "すべて" }), ue.map((e) => /* @__PURE__ */ (0, A.jsx)("option", { children: e }, e))]
 							}),
 							/* @__PURE__ */ (0, A.jsxs)("span", { children: [ae.length, "件の回答"] })
@@ -8898,16 +8688,9 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 				className: "page-content narrow",
 				children: [
 					/* @__PURE__ */ (0, A.jsx)(xe, {}),
-					/* @__PURE__ */ (0, A.jsxs)("div", {
+					/* @__PURE__ */ (0, A.jsx)("div", {
 						className: "page-title",
-						children: [
-							/* @__PURE__ */ (0, A.jsx)("span", {
-								className: "eyebrow",
-								children: "A LITTLE MORE ABOUT THE FUTURE"
-							}),
-							/* @__PURE__ */ (0, A.jsxs)("h1", { children: [s ? pe(s.edition) : "資料", "を読む。"] }),
-							/* @__PURE__ */ (0, A.jsx)("p", { children: "想いやビジョンを、あなたのペースで。" })
-						]
+						children: /* @__PURE__ */ (0, A.jsxs)("h1", { children: [s ? pe(s.edition) : "資料", "を読む。"] })
 					}),
 					/* @__PURE__ */ (0, A.jsxs)("div", {
 						className: "form-surface document-panel",
@@ -8928,16 +8711,9 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 				className: "page-content",
 				children: [
 					/* @__PURE__ */ (0, A.jsx)(xe, {}),
-					/* @__PURE__ */ (0, A.jsxs)("div", {
+					/* @__PURE__ */ (0, A.jsx)("div", {
 						className: "page-title",
-						children: [
-							/* @__PURE__ */ (0, A.jsx)("span", {
-								className: "eyebrow",
-								children: "FOR THE TEAM"
-							}),
-							/* @__PURE__ */ (0, A.jsx)("h1", { children: "声を受け取る場所。" }),
-							/* @__PURE__ */ (0, A.jsx)("p", { children: "届いた質問に、ひとつずつ回答を。" })
-						]
+						children: /* @__PURE__ */ (0, A.jsx)("h1", { children: "質問・提言の管理" })
 					}),
 					e ? /* @__PURE__ */ (0, A.jsxs)(A.Fragment, { children: [/* @__PURE__ */ (0, A.jsx)("button", {
 						className: "secondary-button admin-logout",
@@ -8958,14 +8734,10 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 					text: "ホームからもう一度お進みください。"
 				})]
 			}) }),
-			/* @__PURE__ */ (0, A.jsxs)("footer", { children: [
-				/* @__PURE__ */ (0, A.jsxs)("div", {
-					className: "footer-logo",
-					children: ["QnK", /* @__PURE__ */ (0, A.jsx)("span", { children: "✳" })]
-				}),
-				/* @__PURE__ */ (0, A.jsx)("p", { children: "あなたの声と、これからをつなぐ。" }),
-				/* @__PURE__ */ (0, A.jsx)("span", { children: "Made with a little sunshine. © 2026 QnK" })
-			] })
+			/* @__PURE__ */ (0, A.jsxs)("footer", { children: [/* @__PURE__ */ (0, A.jsxs)("div", {
+				className: "footer-logo",
+				children: ["QnK", /* @__PURE__ */ (0, A.jsx)("span", { children: "✳" })]
+			}), /* @__PURE__ */ (0, A.jsx)("span", { children: "© 2026 QnK" })] })
 		]
 	});
 }
@@ -9013,12 +8785,8 @@ function Ce({ afterSend: e, navigate: t }) {
 				className: "success-icon",
 				children: /* @__PURE__ */ (0, A.jsx)(C, { size: 32 })
 			}),
-			/* @__PURE__ */ (0, A.jsx)("h2", { children: "質問を受け取りました。" }),
-			/* @__PURE__ */ (0, A.jsxs)("p", { children: [
-				"あなたの声を届けてくれて、ありがとう。",
-				/* @__PURE__ */ (0, A.jsx)("br", {}),
-				"回答が掲載されるまで、ゆっくりお待ちください。"
-			] }),
+			/* @__PURE__ */ (0, A.jsx)("h2", { children: "質問・提言を受け取りました。" }),
+			/* @__PURE__ */ (0, A.jsx)("p", { children: "回答が掲載されるまでお待ちください。" }),
 			/* @__PURE__ */ (0, A.jsxs)("p", {
 				className: "small",
 				children: ["受付番号：", u.current.slice(0, 8)]
@@ -9026,7 +8794,7 @@ function Ce({ afterSend: e, navigate: t }) {
 			/* @__PURE__ */ (0, A.jsxs)("button", {
 				className: "primary-button",
 				onClick: () => t("answers"),
-				children: ["回答一覧へ ", /* @__PURE__ */ (0, A.jsx)(x, { size: 18 })]
+				children: ["木原からの回答へ ", /* @__PURE__ */ (0, A.jsx)(x, { size: 18 })]
 			})
 		]
 	}) : /* @__PURE__ */ (0, A.jsxs)("form", {
@@ -9035,11 +8803,7 @@ function Ce({ afterSend: e, navigate: t }) {
 		children: [
 			/* @__PURE__ */ (0, A.jsxs)("div", {
 				className: "form-intro",
-				children: [
-					/* @__PURE__ */ (0, A.jsx)(ie, { size: 21 }),
-					/* @__PURE__ */ (0, A.jsx)("p", { children: "小さな疑問も、気軽にどうぞ。" }),
-					/* @__PURE__ */ (0, A.jsx)("span", { children: "すべて必須項目です" })
-				]
+				children: [/* @__PURE__ */ (0, A.jsx)(ie, { size: 21 }), /* @__PURE__ */ (0, A.jsx)("span", { children: "すべて必須項目です" })]
 			}),
 			/* @__PURE__ */ (0, A.jsxs)("label", {
 				className: "field",
@@ -9060,7 +8824,7 @@ function Ce({ afterSend: e, navigate: t }) {
 					type: "checkbox",
 					checked: n,
 					onChange: (e) => r(e.target.checked)
-				}), "匿名で質問する"]
+				}), "匿名で質問・提言する"]
 			}),
 			/* @__PURE__ */ (0, A.jsxs)("div", {
 				className: "field-grid",
@@ -9088,7 +8852,7 @@ function Ce({ afterSend: e, navigate: t }) {
 			}),
 			/* @__PURE__ */ (0, A.jsxs)("label", {
 				className: "field",
-				children: ["質問の種類", /* @__PURE__ */ (0, A.jsxs)("select", {
+				children: ["質問・提言の種類", /* @__PURE__ */ (0, A.jsxs)("select", {
 					name: "category",
 					required: !0,
 					defaultValue: "",
@@ -9101,7 +8865,7 @@ function Ce({ afterSend: e, navigate: t }) {
 			}),
 			/* @__PURE__ */ (0, A.jsxs)("label", {
 				className: "field",
-				children: ["質問の内容", /* @__PURE__ */ (0, A.jsx)("textarea", {
+				children: ["質問・提言の内容", /* @__PURE__ */ (0, A.jsx)("textarea", {
 					name: "question",
 					required: !0,
 					maxLength: 5e3,
@@ -9111,7 +8875,7 @@ function Ce({ afterSend: e, navigate: t }) {
 			}),
 			/* @__PURE__ */ (0, A.jsxs)("div", {
 				className: "privacy-note",
-				children: [/* @__PURE__ */ (0, A.jsx)(w, { size: 15 }), /* @__PURE__ */ (0, A.jsx)("p", { children: "お名前と未回答の質問は、運営者だけが閲覧します。回答時には質問内容が公開されますので、個人情報の記載はお控えください。" })]
+				children: [/* @__PURE__ */ (0, A.jsx)(w, { size: 15 }), /* @__PURE__ */ (0, A.jsx)("p", { children: "お名前と未回答の質問・提言は、運営者だけが閲覧します。回答時には質問・提言の内容が公開されますので、個人情報の記載はお控えください。" })]
 			}),
 			o && /* @__PURE__ */ (0, A.jsx)("p", {
 				role: "alert",
@@ -9121,7 +8885,7 @@ function Ce({ afterSend: e, navigate: t }) {
 			/* @__PURE__ */ (0, A.jsxs)("button", {
 				disabled: i,
 				className: "primary-button full",
-				children: [i ? "送信しています…" : "質問を届ける", /* @__PURE__ */ (0, A.jsx)(se, { size: 18 })]
+				children: [i ? "送信しています…" : "質問・提言を届ける", /* @__PURE__ */ (0, A.jsx)(se, { size: 18 })]
 			})
 		]
 	});
@@ -9147,7 +8911,7 @@ function we({ onPublish: e }) {
 	async function m(t) {
 		c(""), u("");
 		try {
-			return await D("/api/admin", t), u("公開しました。回答一覧に反映されています。"), await p(), e(), !0;
+			return await D("/api/admin", t), u("公開しました。木原からの回答に反映されています。"), await p(), e(), !0;
 		} catch (e) {
 			return c(e.message), !1;
 		}
@@ -9160,12 +8924,12 @@ function we({ onPublish: e }) {
 				/* @__PURE__ */ (0, A.jsxs)("button", {
 					className: r === "inbox" ? "selected" : "",
 					onClick: () => i("inbox"),
-					children: ["届いた質問 ", /* @__PURE__ */ (0, A.jsx)("span", { children: g.length })]
+					children: ["届いた質問・提言 ", /* @__PURE__ */ (0, A.jsx)("span", { children: g.length })]
 				}),
 				/* @__PURE__ */ (0, A.jsxs)("button", {
 					className: r === "external" ? "selected" : "",
 					onClick: () => i("external"),
-					children: [/* @__PURE__ */ (0, A.jsx)(ae, { size: 16 }), "別媒体の質問を掲載"]
+					children: [/* @__PURE__ */ (0, A.jsx)(ae, { size: 16 }), "別媒体の質問・提言を掲載"]
 				}),
 				/* @__PURE__ */ (0, A.jsx)("button", {
 					className: r === "editions" ? "selected" : "",
@@ -9210,16 +8974,16 @@ function we({ onPublish: e }) {
 				publish: m
 			}, e.id)),
 			!(a === "pending" ? g : t).length && /* @__PURE__ */ (0, A.jsx)(Se, {
-				title: a === "pending" ? "未回答の質問はありません。" : "まだ質問は届いていません。",
-				text: a === "pending" ? "新しい質問が届くと、ここに表示されます。" : "届いた質問は、この場所に蓄積されます。"
+				title: a === "pending" ? "未回答の質問・提言はありません。" : "まだ質問・提言は届いていません。",
+				text: a === "pending" ? "新しい質問・提言が届くと、ここに表示されます。" : "届いた質問・提言は、この場所に蓄積されます。"
 			})
 		] }) : r === "external" ? /* @__PURE__ */ (0, A.jsxs)("div", {
 			className: "form-surface",
 			children: [
-				/* @__PURE__ */ (0, A.jsx)("h2", { children: "別の媒体から届いた質問" }),
+				/* @__PURE__ */ (0, A.jsx)("h2", { children: "別の媒体から届いた質問・提言" }),
 				/* @__PURE__ */ (0, A.jsx)("p", {
 					className: "small",
-					children: "名前や所属は公開せず、質問と回答をセットで掲載します。所属・学年の集計には含まれません。"
+					children: "名前や所属は公開せず、質問・提言と回答をセットで掲載します。所属・学年の集計には含まれません。"
 				}),
 				/* @__PURE__ */ (0, A.jsx)(Ee, { publish: m })
 			]
@@ -9323,12 +9087,12 @@ function Ee({ question: e, publish: t }) {
 					className: "original-question",
 					children: [/* @__PURE__ */ (0, A.jsx)("span", {
 						className: "eyebrow",
-						children: "届いた質問（非公開）"
+						children: "届いた質問・提言（非公開）"
 					}), /* @__PURE__ */ (0, A.jsx)("p", { children: e.question })]
 				}),
 				/* @__PURE__ */ (0, A.jsxs)("label", {
 					className: "field",
-					children: ["質問の種類", /* @__PURE__ */ (0, A.jsx)("select", {
+					children: ["質問・提言の種類", /* @__PURE__ */ (0, A.jsx)("select", {
 						name: "category",
 						defaultValue: e?.category || ue[0],
 						children: ue.map((e) => /* @__PURE__ */ (0, A.jsx)("option", { children: e }, e))
@@ -9336,13 +9100,13 @@ function Ee({ question: e, publish: t }) {
 				}),
 				/* @__PURE__ */ (0, A.jsxs)("label", {
 					className: "field",
-					children: ["公開する質問", /* @__PURE__ */ (0, A.jsx)("textarea", {
+					children: ["公開する質問・提言", /* @__PURE__ */ (0, A.jsx)("textarea", {
 						name: "question",
 						required: !0,
 						maxLength: 5e3,
 						rows: 4,
 						defaultValue: e?.publicQuestion || e?.question,
-						placeholder: "質問を入力"
+						placeholder: "質問・提言を入力"
 					})]
 				}),
 				/* @__PURE__ */ (0, A.jsx)("p", {

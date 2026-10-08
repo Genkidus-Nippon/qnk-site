@@ -120,7 +120,7 @@ function text(value,max,label) {
   if(typeof value!=='string' || !value.trim() || value.trim().length>max) fail(400,`${label}を確認してください。`);
   return value.trim();
 }
-function category(value) {if(!CATEGORIES.includes(value))fail(400,'質問の種類を確認してください。');return value;}
+function category(value) {if(!CATEGORIES.includes(value))fail(400,'質問・提言の種類を確認してください。');return value;}
 function prune(data,now){data.sessions=data.sessions.filter(s=>s.expiresAt>now);}
 async function body(req) {
   if(!/^application\/json(?:;|$)/i.test(req.headers['content-type']||''))fail(415,'送信形式を確認してください。');
@@ -202,15 +202,15 @@ export function createApp({store,config,publicDir,now=Date.now}) {
         json(res,200,{answers:data.answers.map(a=>({id:a.id,category:a.category,question:a.question,answer:a.answer,publishedAt:a.publishedAt})).sort((a,b)=>b.publishedAt-a.publishedAt)});return;
       }
       if(path==='/api/questions' && req.method==='POST') {
-        if(!phase(now()))fail(403,'質問の受付は終了しました。');
+        if(!phase(now()))fail(403,'質問・提言の受付は終了しました。');
         rate(`question:${ip}`,10,10*60_000);rate('writes',30,60_000);rate('writes-hour',300,60*60_000);
         const input=await body(req);
         if(typeof input.id!=='string' || !/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(input.id))fail(400,'送信IDを確認してください。');
         if(!['ICX','OGX'].includes(input.affiliation)||!GRADES.includes(input.grade))fail(400,'所属と学年を確認してください。');
-        const q={id:input.id,name:text(input.name,100,'名前'),affiliation:input.affiliation,grade:input.grade,category:category(input.category),question:text(input.question,5000,'質問'),created_at:now()};
+        const q={id:input.id,name:text(input.name,100,'名前'),affiliation:input.affiliation,grade:input.grade,category:category(input.category),question:text(input.question,5000,'質問・提言'),created_at:now()};
         await store.mutate(data=>{
           // 受付終了直前に待ち行列へ入ったリクエストも、保存時に再判定。
-          if(!phase(now()))fail(403,'質問の受付は終了しました。');
+          if(!phase(now()))fail(403,'質問・提言の受付は終了しました。');
           const existing=data.questions.find(x=>x.id===q.id);
           if(existing){for(const key of ['name','affiliation','grade','category','question'])if(existing[key]!==q[key])fail(409,'送信IDが重複しています。ページを開き直してください。');return;}
           prune(data,now());data.questions.push(q);
@@ -232,9 +232,9 @@ export function createApp({store,config,publicDir,now=Date.now}) {
             if(value){let target;try{target=new URL(value);}catch{fail(400,'資料のURLを確認してください。');}if(target.protocol!=='https:'||target.username||target.password)fail(400,'資料のURLにはhttpsを使用してください。');}
             await store.mutate(data=>{prune(data,time);data.editions[input.edition]=value;});
           } else if(['answer','external'].includes(input.action)) {
-            const answer={id:randomUUID(),questionId:input.action==='answer'?input.questionId:null,category:category(input.category),question:text(input.question,5000,'公開する質問'),answer:text(input.answer,10000,'回答'),publishedAt:time};
+            const answer={id:randomUUID(),questionId:input.action==='answer'?input.questionId:null,category:category(input.category),question:text(input.question,5000,'公開する質問・提言'),answer:text(input.answer,10000,'回答'),publishedAt:time};
             await store.mutate(data=>{
-              if(input.action==='answer'&&!data.questions.some(q=>q.id===answer.questionId))fail(404,'質問が見つかりません。');
+              if(input.action==='answer'&&!data.questions.some(q=>q.id===answer.questionId))fail(404,'質問・提言が見つかりません。');
               prune(data,time);
               const index=answer.questionId?data.answers.findIndex(a=>a.questionId===answer.questionId):-1;
               if(index>=0)data.answers[index]={...answer,id:data.answers[index].id};else data.answers.push(answer);
@@ -245,7 +245,7 @@ export function createApp({store,config,publicDir,now=Date.now}) {
       }
       if(path.startsWith('/api/'))fail(404,'ページが見つかりません。');
       if(!['GET','HEAD'].includes(req.method))fail(405,'操作を確認してください。');
-      const files={'/':['index.html','text/html; charset=utf-8'],'/index.html':['index.html','text/html; charset=utf-8'],'/app.js':['app.js','text/javascript; charset=utf-8'],'/style.css':['style.css','text/css; charset=utf-8'],'/favicon.svg':['favicon.svg','image/svg+xml']};
+      const files={'/':['index.html','text/html; charset=utf-8'],'/index.html':['index.html','text/html; charset=utf-8'],'/app.js':['app.js','text/javascript; charset=utf-8'],'/style.css':['style.css','text/css; charset=utf-8'],'/favicon.svg':['favicon.svg','image/svg+xml'],'/kihara.jpg':['kihara.jpg','image/jpeg']};
       const entry=files[path];if(!entry)fail(404,'ページが見つかりません。');
       const content=await readFile(new URL(entry[0],publicDir));
       res.writeHead(200,{'Content-Type':entry[1],'Cache-Control':'no-cache'});res.end(req.method==='HEAD'?undefined:content);
