@@ -162,3 +162,13 @@ test('サイト以外のファイルを配信せず、ログインの試行回�
   assert.equal((await request('/api/auth/login',{email:'invalid',password:'invalid'})).status,429);
 });
 
+test('共有プレビューは加工済み画像を配信し、ホームの元画像も維持する',async t=>{
+  const {request}=await fixture(t);
+  const image=await request('/qnk-share-soft.png');
+  assert.equal(image.status,200);assert.equal(image.headers.get('content-type'),'image/png');
+  const home=await request('/');
+  assert.match(home.data,/property="og:image" content="https:\/\/qnk.onrender.com\/qnk-share-soft.png"/);
+  assert.match(home.data,/name="twitter:image" content="https:\/\/qnk.onrender.com\/qnk-share-soft.png"/);
+  assert.equal((await request('/kihara.jpg')).status,200);
+});
+

@@ -148,7 +148,7 @@ export function createApp({store,config,publicDir,now=Date.now}) {
       }
       if(path.startsWith('/api/'))fail(404,'ページが見つかりません。');
       if(!['GET','HEAD'].includes(req.method))fail(405,'操作を確認してください。');
-      const files={'/':['index.html','text/html; charset=utf-8'],'/index.html':['index.html','text/html; charset=utf-8'],'/app.js':['app.js','text/javascript; charset=utf-8'],'/style.css':['style.css','text/css; charset=utf-8'],'/favicon.svg':['favicon.svg','image/svg+xml'],'/kihara.jpg':['kihara.jpg','image/jpeg']};
+      const files={'/':['index.html','text/html; charset=utf-8'],'/index.html':['index.html','text/html; charset=utf-8'],'/app.js':['app.js','text/javascript; charset=utf-8'],'/style.css':['style.css','text/css; charset=utf-8'],'/favicon.svg':['favicon.svg','image/svg+xml'],'/kihara.jpg':['kihara.jpg','image/jpeg'],'/qnk-share-soft.png':['qnk-share-soft.png','image/png']};
       const entry=files[path];if(!entry)fail(404,'ページが見つかりません。');
       const content=await readFile(new URL(entry[0],publicDir));
       res.writeHead(200,{'Content-Type':entry[1],'Cache-Control':'no-cache'});res.end(req.method==='HEAD'?undefined:content);
