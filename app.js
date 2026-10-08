@@ -8854,6 +8854,10 @@ function Ee({ afterSend: e, navigate: t }) {
 				className: "form-intro",
 				children: [/* @__PURE__ */ (0, k.jsx)(ie, { size: 21 }), /* @__PURE__ */ (0, k.jsx)("span", { children: "すべて必須項目です" })]
 			}),
+			/* @__PURE__ */ (0, k.jsxs)("div", {
+				className: "form-notice",
+				children: [/* @__PURE__ */ (0, k.jsx)("p", { children: "※質問者の名前は公開されません。" }), /* @__PURE__ */ (0, k.jsx)("p", { children: "※学年と所属は集計し当サイトヘッダーにて記載します。" })]
+			}),
 			/* @__PURE__ */ (0, k.jsxs)("label", {
 				className: "field",
 				children: ["お名前", /* @__PURE__ */ (0, k.jsx)("div", {
