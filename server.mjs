@@ -153,7 +153,7 @@ export function createApp({store,config,publicDir,now=Date.now}) {
   async function admin(req,required=true){
     const value=token(req);
     if(value){const {data}=await store.read();if(data.sessions.some(s=>s.hash===hash(value)&&s.expiresAt>now()&&s.credential===credential))return true;}
-    if(required)fail(401,'運営者としてログインしてください。');
+    if(required)fail(401,'木原としてログインしてください。');
     return false;
   }
   function json(res,status,data,headers={}) {

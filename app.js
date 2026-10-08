@@ -8281,8 +8281,8 @@ function ve({ onLoggedIn: e }) {
 		className: "form-surface restricted",
 		children: [
 			/* @__PURE__ */ (0, A.jsx)(w, { size: 32 }),
-			/* @__PURE__ */ (0, A.jsx)("h2", { children: "運営者専用ページ" }),
-			/* @__PURE__ */ (0, A.jsx)("p", { children: "運営者のメールアドレスと、QnK用のパスワードでログインしてください。" }),
+			/* @__PURE__ */ (0, A.jsx)("h2", { children: "木原専用ページ" }),
+			/* @__PURE__ */ (0, A.jsx)("p", { children: "木原のメールアドレスと、QnK用のパスワードでログインしてください。" }),
 			/* @__PURE__ */ (0, A.jsxs)("form", {
 				className: "login-form",
 				onSubmit: a,
@@ -8314,7 +8314,7 @@ function ve({ onLoggedIn: e }) {
 					/* @__PURE__ */ (0, A.jsxs)("button", {
 						className: "primary-button full",
 						disabled: r,
-						children: [r ? "ログインしています…" : "運営者としてログイン", /* @__PURE__ */ (0, A.jsx)(x, { size: 17 })]
+						children: [r ? "ログインしています…" : "木原としてログイン", /* @__PURE__ */ (0, A.jsx)(x, { size: 17 })]
 					})
 				]
 			}),
@@ -8462,7 +8462,7 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 								] }),
 								/* @__PURE__ */ (0, A.jsxs)("a", {
 									href: "#admin",
-									children: [/* @__PURE__ */ (0, A.jsx)(w, { size: 14 }), "運営者ページ"]
+									children: [/* @__PURE__ */ (0, A.jsx)(w, { size: 14 }), "木原専用ページ"]
 								})
 							] })] })]
 						})]
@@ -8697,7 +8697,7 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 						}, e.id)) : /* @__PURE__ */ (0, A.jsx)(Se, {
 							icon: "leaf",
 							title: m || _ !== "すべて" ? "該当する回答はありません" : "回答は、ここに届きます。",
-							text: m || _ !== "すべて" ? "検索する言葉や種類を変えてみてください。" : "運営者が回答を掲載すると、この場所で読めます。"
+							text: m || _ !== "すべて" ? "検索する言葉や種類を変えてみてください。" : "木原が回答を掲載すると、この場所で読めます。"
 						})
 					})
 				]
@@ -8892,7 +8892,7 @@ function Ce({ afterSend: e, navigate: t }) {
 			}),
 			/* @__PURE__ */ (0, A.jsxs)("div", {
 				className: "privacy-note",
-				children: [/* @__PURE__ */ (0, A.jsx)(w, { size: 15 }), /* @__PURE__ */ (0, A.jsx)("p", { children: "お名前と未回答の質問・提言は、運営者だけが閲覧します。回答時には質問・提言の内容が公開されますので、個人情報の記載はお控えください。" })]
+				children: [/* @__PURE__ */ (0, A.jsx)(w, { size: 15 }), /* @__PURE__ */ (0, A.jsx)("p", { children: "お名前と未回答の質問・提言は、木原だけが閲覧します。回答時には質問・提言の内容が公開されますので、個人情報の記載はお控えください。" })]
 			}),
 			o && /* @__PURE__ */ (0, A.jsx)("p", {
 				role: "alert",
