@@ -64,3 +64,14 @@
 .form-notice{margin-bottom:26px;font-size:12px;line-height:1.9;color:var(--ink)}
 
 .edited-note{font-size:11px;color:var(--ink);background:#f4e7d7;border-radius:6px;padding:4px 8px}.qa-meta{flex-wrap:wrap;gap:8px}
+
+/* 質問集：ページ移動せず回答を開く */
+.answer-grid-hint{font-size:12px;line-height:1.8;color:var(--muted);margin:-6px 0 20px}
+.answer-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}.answer-list>.empty{grid-column:1/-1}
+.question-card{min-width:0;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s,box-shadow .15s}.question-card:hover,.question-card[open]{border-color:#b88a62;box-shadow:0 5px 20px #694c370c}
+.question-card summary{list-style:none;cursor:pointer;padding:24px;min-height:205px;display:flex;flex-direction:column;gap:17px;touch-action:manipulation}.question-card summary::-webkit-details-marker{display:none}.question-card summary:focus-visible{outline:3px solid #ba7850;outline-offset:-4px;border-radius:14px}
+.question-card-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.question-card h2{font-size:16px;font-weight:500;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere}.question-card-q{font:24px Georgia,serif;color:var(--orange);margin-right:10px}.question-card-toggle{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:var(--orange);margin-top:auto;padding-top:4px}.question-card-toggle svg{transition:transform .15s}.question-card[open] .question-card-toggle svg{transform:rotate(180deg)}.question-card .when-open{display:none}.question-card[open] .when-open{display:inline}.question-card[open] .when-closed{display:none}
+.question-card-answer{padding:0 24px 24px;border-top:1px solid #ebe5d8;margin:0 24px}.question-card-answer .qa-meta{padding-top:18px;margin-bottom:14px;justify-content:flex-start;line-height:1.7}.question-card-answer{padding-left:0;padding-right:0}.question-card-a{display:block;font:24px Georgia,serif;color:var(--green);margin-bottom:8px}.question-card-answer p{font-size:13px;line-height:2.1;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:950px){.answer-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.answer-list{grid-template-columns:1fr;gap:14px}.question-card summary{min-height:165px;padding:21px}.question-card-answer{margin:0 21px;padding-bottom:21px}}
+@media(prefers-reduced-motion:reduce){.question-card,.question-card-toggle svg{transition:none}}
