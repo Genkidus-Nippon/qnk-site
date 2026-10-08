@@ -8503,10 +8503,10 @@ function be({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 								className: "hero-sub",
 								children: [/* @__PURE__ */ (0, A.jsx)("span", {
 									className: "hero-line",
-									children: "あなたも、2728termを木原と一緒に"
+									children: "あなたも、木原と一緒に"
 								}), /* @__PURE__ */ (0, A.jsx)("span", {
 									className: "hero-line",
-									children: "作りませんか？"
+									children: "2728termを作りませんか？"
 								})]
 							}),
 							/* @__PURE__ */ (0, A.jsx)("p", {
