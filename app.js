@@ -8684,10 +8684,17 @@ function Se({ adminAllowed: e, initialNow: t, onAdminChange: n }) {
 							children: [
 								/* @__PURE__ */ (0, k.jsxs)("div", {
 									className: "qa-meta",
-									children: [/* @__PURE__ */ (0, k.jsx)("span", {
-										className: "pill",
-										children: e.category
-									}), /* @__PURE__ */ (0, k.jsx)("time", { children: new Date(e.publishedAt).toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" }) })]
+									children: [
+										/* @__PURE__ */ (0, k.jsx)("span", {
+											className: "pill",
+											children: e.category
+										}),
+										/* @__PURE__ */ (0, k.jsx)("time", { children: new Date(e.publishedAt).toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" }) }),
+										e.editedAt && /* @__PURE__ */ (0, k.jsxs)("span", {
+											className: "edited-note",
+											children: ["編集済み：", new Date(e.editedAt).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })]
+										})
+									]
 								}),
 								/* @__PURE__ */ (0, k.jsxs)("div", {
 									className: "qa-line",
@@ -8966,93 +8973,104 @@ function Ee({ afterSend: e, navigate: t }) {
 	});
 }
 function De({ onPublish: e }) {
-	let [t, n] = (0, h.useState)([]), [r, i] = (0, h.useState)("inbox"), [a, o] = (0, h.useState)("pending"), [s, c] = (0, h.useState)(""), [l, u] = (0, h.useState)(""), [d, f] = (0, h.useState)({ 1: de });
-	async function p() {
+	let [t, n] = (0, h.useState)([]), [r, i] = (0, h.useState)([]), [a, o] = (0, h.useState)("inbox"), [s, c] = (0, h.useState)("pending"), [l, u] = (0, h.useState)(""), [d, f] = (0, h.useState)(""), [p, m] = (0, h.useState)({ 1: de });
+	async function g() {
 		try {
 			let e = await D("/api/admin");
-			n(e.questions), f({
+			i(e.questions), n(e.answers), m({
 				1: de,
 				...Object.fromEntries(e.editions.map((e) => [e.id, e.url]))
 			});
 		} catch (e) {
-			c(e.message);
+			u(e.message);
 		}
 	}
 	(0, h.useEffect)(() => {
-		p();
-		let e = setInterval(p, 15e3);
+		g();
+		let e = setInterval(g, 15e3);
 		return () => clearInterval(e);
 	}, []);
-	async function m(t) {
-		c(""), u("");
+	async function _(t) {
+		u(""), f("");
 		try {
-			return await D("/api/admin", t), u("公開しました。木原からの回答に反映されています。"), await p(), e(), !0;
+			return await D("/api/admin", t), f("公開しました。木原からの回答に反映されています。"), await g(), e(), !0;
 		} catch (e) {
-			return c(e.message), !1;
+			return u(e.message), !1;
 		}
 	}
-	let g = t.filter((e) => !e.answer);
+	let v = r.filter((e) => !e.answer);
 	return /* @__PURE__ */ (0, k.jsxs)(k.Fragment, { children: [
 		/* @__PURE__ */ (0, k.jsxs)("div", {
 			className: "admin-tabs",
 			children: [
 				/* @__PURE__ */ (0, k.jsxs)("button", {
-					className: r === "inbox" ? "selected" : "",
-					onClick: () => i("inbox"),
-					children: ["届いた質問・提言 ", /* @__PURE__ */ (0, k.jsx)("span", { children: g.length })]
+					className: a === "inbox" ? "selected" : "",
+					onClick: () => o("inbox"),
+					children: ["届いた質問・提言 ", /* @__PURE__ */ (0, k.jsx)("span", { children: v.length })]
 				}),
 				/* @__PURE__ */ (0, k.jsxs)("button", {
-					className: r === "external" ? "selected" : "",
-					onClick: () => i("external"),
+					className: a === "published" ? "selected" : "",
+					onClick: () => o("published"),
+					children: ["公開済みの回答を編集 ", /* @__PURE__ */ (0, k.jsx)("span", { children: t.length })]
+				}),
+				/* @__PURE__ */ (0, k.jsxs)("button", {
+					className: a === "external" ? "selected" : "",
+					onClick: () => o("external"),
 					children: [/* @__PURE__ */ (0, k.jsx)(ae, { size: 16 }), "別媒体の質問・提言を掲載"]
 				}),
 				/* @__PURE__ */ (0, k.jsx)("button", {
-					className: r === "editions" ? "selected" : "",
-					onClick: () => i("editions"),
+					className: a === "editions" ? "selected" : "",
+					onClick: () => o("editions"),
 					children: "資料リンク"
 				})
 			]
 		}),
-		s && /* @__PURE__ */ (0, k.jsx)("p", {
+		l && /* @__PURE__ */ (0, k.jsx)("p", {
 			className: "error",
 			role: "alert",
-			children: s
+			children: l
 		}),
-		l && /* @__PURE__ */ (0, k.jsxs)("p", {
+		d && /* @__PURE__ */ (0, k.jsxs)("p", {
 			className: "saved",
 			role: "status",
-			children: [/* @__PURE__ */ (0, k.jsx)(C, { size: 16 }), l]
+			children: [/* @__PURE__ */ (0, k.jsx)(C, { size: 16 }), d]
 		}),
-		r === "inbox" ? /* @__PURE__ */ (0, k.jsxs)(k.Fragment, { children: [
+		a === "inbox" ? /* @__PURE__ */ (0, k.jsxs)(k.Fragment, { children: [
 			/* @__PURE__ */ (0, k.jsxs)("div", {
 				className: "inbox-filter",
 				children: [/* @__PURE__ */ (0, k.jsxs)("button", {
-					className: a === "pending" ? "selected" : "",
-					onClick: () => o("pending"),
+					className: s === "pending" ? "selected" : "",
+					onClick: () => c("pending"),
 					children: [
 						"未回答（",
-						g.length,
+						v.length,
 						"）"
 					]
 				}), /* @__PURE__ */ (0, k.jsxs)("button", {
-					className: a === "all" ? "selected" : "",
-					onClick: () => o("all"),
+					className: s === "all" ? "selected" : "",
+					onClick: () => c("all"),
 					children: [
 						"すべて（",
-						t.length,
+						r.length,
 						"）"
 					]
 				})]
 			}),
-			(a === "pending" ? g : t).map((e) => /* @__PURE__ */ (0, k.jsx)(ke, {
+			(s === "pending" ? v : r).map((e) => /* @__PURE__ */ (0, k.jsx)(ke, {
 				question: e,
-				publish: m
+				publish: _
 			}, e.id)),
-			!(a === "pending" ? g : t).length && /* @__PURE__ */ (0, k.jsx)(we, {
-				title: a === "pending" ? "未回答の質問・提言はありません。" : "まだ質問・提言は届いていません。",
-				text: a === "pending" ? "新しい質問・提言が届くと、ここに表示されます。" : "届いた質問・提言は、この場所に蓄積されます。"
+			!(s === "pending" ? v : r).length && /* @__PURE__ */ (0, k.jsx)(we, {
+				title: s === "pending" ? "未回答の質問・提言はありません。" : "まだ質問・提言は届いていません。",
+				text: s === "pending" ? "新しい質問・提言が届くと、ここに表示されます。" : "届いた質問・提言は、この場所に蓄積されます。"
 			})
-		] }) : r === "external" ? /* @__PURE__ */ (0, k.jsxs)("div", {
+		] }) : a === "published" ? /* @__PURE__ */ (0, k.jsxs)(k.Fragment, { children: [t.map((e) => /* @__PURE__ */ (0, k.jsx)(ke, {
+			publishedAnswer: e,
+			publish: _
+		}, e.id)), !t.length && /* @__PURE__ */ (0, k.jsx)(we, {
+			title: "公開済みの回答はありません。",
+			text: "掲載した回答は、ここから編集できます。"
+		})] }) : a === "external" ? /* @__PURE__ */ (0, k.jsxs)("div", {
 			className: "form-surface",
 			children: [
 				/* @__PURE__ */ (0, k.jsx)("h2", { children: "別の媒体から届いた質問・提言" }),
@@ -9060,7 +9078,7 @@ function De({ onPublish: e }) {
 					className: "small",
 					children: "名前や所属は公開せず、質問・提言と回答をセットで掲載します。所属・学年の集計には含まれません。"
 				}),
-				/* @__PURE__ */ (0, k.jsx)(ke, { publish: m })
+				/* @__PURE__ */ (0, k.jsx)(ke, { publish: _ })
 			]
 		}) : /* @__PURE__ */ (0, k.jsxs)("div", {
 			className: "form-surface",
@@ -9076,16 +9094,16 @@ function De({ onPublish: e }) {
 					3
 				].map((t) => /* @__PURE__ */ (0, k.jsx)(Oe, {
 					n: t,
-					url: d[t] || "",
+					url: p[t] || "",
 					save: async (n) => {
 						try {
 							return await D("/api/admin", {
 								action: "edition",
 								edition: t,
 								url: n
-							}), u(`${me(t)}のリンクを保存しました。`), await p(), e(), !0;
+							}), f(`${me(t)}のリンクを保存しました。`), await g(), e(), !0;
 						} catch (e) {
-							return c(e.message), !1;
+							return u(e.message), !1;
 						}
 					}
 				}, t))
@@ -9121,99 +9139,114 @@ function Oe({ n: e, url: t, save: n }) {
 		})]
 	});
 }
-function ke({ question: e, publish: t }) {
-	let [n, r] = (0, h.useState)(!1);
+function ke({ question: e, publishedAnswer: t, publish: n }) {
+	let [r, i] = (0, h.useState)(!1);
 	return /* @__PURE__ */ (0, k.jsxs)("form", {
-		className: e ? "admin-question form-surface" : "external-form",
-		onSubmit: async (n) => {
-			n.preventDefault();
-			let i = n.currentTarget, a = new FormData(i);
-			r(!0);
+		className: e || t ? "admin-question form-surface" : "external-form",
+		onSubmit: async (r) => {
+			r.preventDefault();
+			let a = r.currentTarget, o = new FormData(a);
+			i(!0);
 			try {
-				await t({
-					action: e ? "answer" : "external",
+				await n({
+					action: t ? "editAnswer" : e ? "answer" : "external",
+					answerId: t?.id,
 					questionId: e?.id,
-					category: a.get("category"),
-					question: a.get("question"),
-					answer: a.get("answer")
-				}) && !e && i.reset();
+					category: o.get("category"),
+					question: o.get("question"),
+					answer: o.get("answer")
+				}) && !e && !t && a.reset();
 			} finally {
-				r(!1);
+				i(!1);
 			}
 		},
-		children: [e && /* @__PURE__ */ (0, k.jsxs)("div", {
-			className: "question-meta",
-			children: [/* @__PURE__ */ (0, k.jsx)("span", {
-				className: "pill",
-				children: e.answer ? "公開済み" : "未回答"
-			}), /* @__PURE__ */ (0, k.jsxs)("span", { children: [
-				e.name,
-				" / ",
-				e.affiliation || "別媒体",
-				" ",
-				e.grade,
-				" / ",
-				new Date(e.created_at).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
-			] })]
-		}), /* @__PURE__ */ (0, k.jsxs)("div", {
-			className: "admin-columns",
-			children: [/* @__PURE__ */ (0, k.jsxs)("div", { children: [
-				e && /* @__PURE__ */ (0, k.jsxs)("div", {
-					className: "original-question",
-					children: [
-						/* @__PURE__ */ (0, k.jsx)("span", {
-							className: "eyebrow",
-							children: "届いた質問・提言（非公開）"
-						}),
-						/* @__PURE__ */ (0, k.jsxs)("div", {
-							className: "question-perspectives",
-							children: [/* @__PURE__ */ (0, k.jsx)("span", { children: "質問の観点：" }), e.perspectives?.length ? e.perspectives.map((e) => /* @__PURE__ */ (0, k.jsx)("span", {
-								className: "pill",
-								children: e
-							}, e)) : /* @__PURE__ */ (0, k.jsx)("span", { children: "未選択（追加前の質問）" })]
-						}),
-						/* @__PURE__ */ (0, k.jsx)("p", { children: e.question })
-					]
-				}),
-				/* @__PURE__ */ (0, k.jsxs)("label", {
+		children: [
+			t && /* @__PURE__ */ (0, k.jsxs)("div", {
+				className: "question-meta",
+				children: [/* @__PURE__ */ (0, k.jsx)("span", {
+					className: "pill",
+					children: "公開済み"
+				}), /* @__PURE__ */ (0, k.jsxs)("span", { children: [
+					"掲載：",
+					new Date(t.publishedAt).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" }),
+					t.editedAt && /* @__PURE__ */ (0, k.jsxs)(k.Fragment, { children: [" ／ 編集済み：", new Date(t.editedAt).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })] })
+				] })]
+			}),
+			e && /* @__PURE__ */ (0, k.jsxs)("div", {
+				className: "question-meta",
+				children: [/* @__PURE__ */ (0, k.jsx)("span", {
+					className: "pill",
+					children: e.answer ? "公開済み" : "未回答"
+				}), /* @__PURE__ */ (0, k.jsxs)("span", { children: [
+					e.name,
+					" / ",
+					e.affiliation || "別媒体",
+					" ",
+					e.grade,
+					" / ",
+					new Date(e.created_at).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })
+				] })]
+			}),
+			/* @__PURE__ */ (0, k.jsxs)("div", {
+				className: "admin-columns",
+				children: [/* @__PURE__ */ (0, k.jsxs)("div", { children: [
+					e && /* @__PURE__ */ (0, k.jsxs)("div", {
+						className: "original-question",
+						children: [
+							/* @__PURE__ */ (0, k.jsx)("span", {
+								className: "eyebrow",
+								children: "届いた質問・提言（非公開）"
+							}),
+							/* @__PURE__ */ (0, k.jsxs)("div", {
+								className: "question-perspectives",
+								children: [/* @__PURE__ */ (0, k.jsx)("span", { children: "質問の観点：" }), e.perspectives?.length ? e.perspectives.map((e) => /* @__PURE__ */ (0, k.jsx)("span", {
+									className: "pill",
+									children: e
+								}, e)) : /* @__PURE__ */ (0, k.jsx)("span", { children: "未選択（追加前の質問）" })]
+							}),
+							/* @__PURE__ */ (0, k.jsx)("p", { children: e.question })
+						]
+					}),
+					/* @__PURE__ */ (0, k.jsxs)("label", {
+						className: "field",
+						children: ["質問・提言の種類", /* @__PURE__ */ (0, k.jsx)("select", {
+							name: "category",
+							defaultValue: t?.category || e?.category || ue[0],
+							children: ue.map((e) => /* @__PURE__ */ (0, k.jsx)("option", { children: e }, e))
+						})]
+					}),
+					/* @__PURE__ */ (0, k.jsxs)("label", {
+						className: "field",
+						children: ["公開する質問・提言", /* @__PURE__ */ (0, k.jsx)("textarea", {
+							name: "question",
+							required: !0,
+							maxLength: 5e3,
+							rows: 4,
+							defaultValue: t?.question || e?.publicQuestion || e?.question,
+							placeholder: "質問・提言を入力"
+						})]
+					}),
+					/* @__PURE__ */ (0, k.jsx)("p", {
+						className: "small",
+						children: "個人情報を取り除いてから公開してください。"
+					})
+				] }), /* @__PURE__ */ (0, k.jsxs)("div", { children: [/* @__PURE__ */ (0, k.jsxs)("label", {
 					className: "field",
-					children: ["質問・提言の種類", /* @__PURE__ */ (0, k.jsx)("select", {
-						name: "category",
-						defaultValue: e?.category || ue[0],
-						children: ue.map((e) => /* @__PURE__ */ (0, k.jsx)("option", { children: e }, e))
-					})]
-				}),
-				/* @__PURE__ */ (0, k.jsxs)("label", {
-					className: "field",
-					children: ["公開する質問・提言", /* @__PURE__ */ (0, k.jsx)("textarea", {
-						name: "question",
+					children: ["回答", /* @__PURE__ */ (0, k.jsx)("textarea", {
+						name: "answer",
 						required: !0,
-						maxLength: 5e3,
-						rows: 4,
-						defaultValue: e?.publicQuestion || e?.question,
-						placeholder: "質問・提言を入力"
+						maxLength: 1e4,
+						rows: 9,
+						defaultValue: t?.answer || e?.answer,
+						placeholder: "あなたの言葉で、回答を入力してください。"
 					})]
-				}),
-				/* @__PURE__ */ (0, k.jsx)("p", {
-					className: "small",
-					children: "個人情報を取り除いてから公開してください。"
-				})
-			] }), /* @__PURE__ */ (0, k.jsxs)("div", { children: [/* @__PURE__ */ (0, k.jsxs)("label", {
-				className: "field",
-				children: ["回答", /* @__PURE__ */ (0, k.jsx)("textarea", {
-					name: "answer",
-					required: !0,
-					maxLength: 1e4,
-					rows: 9,
-					defaultValue: e?.answer,
-					placeholder: "あなたの言葉で、回答を入力してください。"
-				})]
-			}), /* @__PURE__ */ (0, k.jsxs)("button", {
-				disabled: n,
-				className: "primary-button full",
-				children: [n ? "掲載しています…" : e?.answer ? "回答を更新して公開" : "回答を掲載する", /* @__PURE__ */ (0, k.jsx)(ee, { size: 17 })]
-			})] })]
-		})]
+				}), /* @__PURE__ */ (0, k.jsxs)("button", {
+					disabled: r,
+					className: "primary-button full",
+					children: [r ? "掲載しています…" : t || e?.answer ? "回答を更新して公開" : "回答を掲載する", /* @__PURE__ */ (0, k.jsx)(ee, { size: 17 })]
+				})] })]
+			})
+		]
 	});
 }
 //#endregion

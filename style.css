@@ -62,3 +62,5 @@
 @media(max-width:700px){.perspective-options{grid-template-columns:repeat(2,minmax(0,1fr))}.perspective-summary{padding:20px}.perspective-summary h2{font-size:17px}.perspective-counts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.perspective-counts>div{padding:13px}.perspective-counts dd{font-size:24px}}
 
 .form-notice{margin-bottom:26px;font-size:12px;line-height:1.9;color:var(--ink)}
+
+.edited-note{font-size:11px;color:var(--ink);background:#f4e7d7;border-radius:6px;padding:4px 8px}.qa-meta{flex-wrap:wrap;gap:8px}

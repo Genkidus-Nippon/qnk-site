@@ -207,7 +207,7 @@ export function createApp({store,config,publicDir,now=Date.now}) {
       if(path==='/api/answers' && req.method==='GET') {
         if(!phase(now())){json(res,200,{answers:[]});return;}
         const {data}=await store.read();
-        json(res,200,{answers:data.answers.map(a=>({id:a.id,category:a.category,question:a.question,answer:a.answer,publishedAt:a.publishedAt})).sort((a,b)=>b.publishedAt-a.publishedAt)});return;
+        json(res,200,{answers:data.answers.map(a=>({id:a.id,category:a.category,question:a.question,answer:a.answer,publishedAt:a.publishedAt,editedAt:a.editedAt||null})).sort((a,b)=>b.publishedAt-a.publishedAt)});return;
       }
       if(path==='/api/questions' && req.method==='POST') {
         if(!phase(now()))fail(403,'質問・提言の受付は終了しました。');
@@ -229,7 +229,7 @@ export function createApp({store,config,publicDir,now=Date.now}) {
         await admin(req);
         if(req.method==='GET') {
           const {data}=await store.read();
-          json(res,200,{questions:data.questions.map(q=>{const a=data.answers.find(x=>x.questionId===q.id);return {...q,answer:a?.answer||'',publicQuestion:a?.question||''};}).sort((a,b)=>b.created_at-a.created_at),editions:[1,2,3].map(id=>({id,url:data.editions[id]||''}))});return;
+          json(res,200,{questions:data.questions.map(q=>{const a=data.answers.find(x=>x.questionId===q.id);return {...q,answer:a?.answer||'',publicQuestion:a?.question||''};}).sort((a,b)=>b.created_at-a.created_at),answers:data.answers.map(a=>({id:a.id,category:a.category,question:a.question,answer:a.answer,publishedAt:a.publishedAt,editedAt:a.editedAt||null})).sort((a,b)=>b.publishedAt-a.publishedAt),editions:[1,2,3].map(id=>({id,url:data.editions[id]||''}))});return;
         }
         if(req.method==='POST') {
           rate('writes',30,60_000);rate('writes-hour',300,60*60_000);
@@ -239,13 +239,18 @@ export function createApp({store,config,publicDir,now=Date.now}) {
             const value=input.url.trim();
             if(value){let target;try{target=new URL(value);}catch{fail(400,'資料のURLを確認してください。');}if(target.protocol!=='https:'||target.username||target.password)fail(400,'資料のURLにはhttpsを使用してください。');}
             await store.mutate(data=>{prune(data,time);data.editions[input.edition]=value;});
-          } else if(['answer','external'].includes(input.action)) {
+          } else if(['answer','external','editAnswer'].includes(input.action)) {
             const answer={id:randomUUID(),questionId:input.action==='answer'?input.questionId:null,category:category(input.category),question:text(input.question,5000,'公開する質問・提言'),answer:text(input.answer,10000,'回答'),publishedAt:time};
             await store.mutate(data=>{
               if(input.action==='answer'&&!data.questions.some(q=>q.id===answer.questionId))fail(404,'質問・提言が見つかりません。');
               prune(data,time);
-              const index=answer.questionId?data.answers.findIndex(a=>a.questionId===answer.questionId):-1;
-              if(index>=0)data.answers[index]={...answer,id:data.answers[index].id};else data.answers.push(answer);
+              const index=input.action==='editAnswer'?data.answers.findIndex(a=>a.id===input.answerId):(answer.questionId?data.answers.findIndex(a=>a.questionId===answer.questionId):-1);
+              if(input.action==='editAnswer'&&index<0)fail(404,'回答が見つかりません。');
+              if(index>=0){
+                const previous=data.answers[index];
+                const changed=['category','question','answer'].some(key=>previous[key]!==answer[key]);
+                if(changed)data.answers[index]={...previous,category:answer.category,question:answer.question,answer:answer.answer,editedAt:time};
+              }else data.answers.push(answer);
             });
           } else fail(400,'操作を確認してください。');
           json(res,200,{ok:true});return;

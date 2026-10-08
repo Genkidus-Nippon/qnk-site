@@ -20,6 +20,30 @@ async function fixture(t) {
   return {remote,store,request,setTime:value=>{clock=value;}};
 }
 const question=()=>({id:randomUUID(),name:'非公開の名前',affiliation:'ICX',grade:'2年',category:'Summary',question:'活動について教えてください'});
+test('Web・別媒体の回答を編集し、初回掲載日を維持して実変更だけ編集日時を記録する',async t=>{
+  const {request,setTime}=await fixture(t),q=question();await request('/api/questions',q);const cookie=await login(request);
+  const first=Date.parse('2026-10-07T10:00:00+09:00'),second=first+60_000;
+  for(const source of ['answer','external']){
+    const payload={action:source,questionId:q.id,category:'Summary',question:'公開の質問 '+source,answer:'初回回答'};
+    assert.equal((await request('/api/admin',payload,cookie)).status,200);
+  }
+  const initial=(await request('/api/admin',undefined,cookie)).data.answers;
+  assert.equal(initial.length,2);assert.ok(initial.every(a=>a.publishedAt===first&&a.editedAt===null));
+  setTime(second);
+  for(const a of initial){
+    const edit={action:'editAnswer',answerId:a.id,category:a.category,question:a.question,answer:'修正回答'};
+    assert.equal((await request('/api/admin',edit)).status,401);
+    assert.equal((await request('/api/admin',edit,cookie)).status,200);
+    setTime(second+60_000);
+    assert.equal((await request('/api/admin',edit,cookie)).status,200);
+    setTime(second);
+  }
+  const result=(await request('/api/answers')).data.answers;
+  assert.equal(result.length,2);assert.ok(result.every(a=>a.answer==='修正回答'&&a.publishedAt===first&&a.editedAt===second));
+  assert.equal(JSON.stringify(result).includes(q.name),false);
+  assert.equal((await request('/api/state')).data.total,1);
+  assert.equal((await request('/api/admin',{action:'editAnswer',answerId:randomUUID(),category:'Summary',question:'不存在',answer:'修正'},cookie)).status,404);
+});
 async function login(request){const result=await request('/api/auth/login',{email:config.adminEmail,password:config.adminPassword});assert.equal(result.status,200);return result.cookie.split(';')[0];}
 
 test('複数の観点を保存し、所属・ジャンルと独立して1件ずつ集計する',async t=>{
@@ -85,7 +109,7 @@ test('回答の公開・更新・別媒体の追加と、公開情報に個人�
   assert.equal((await request('/api/admin',{...payload,action:'external',questionId:undefined,question:'別の媒体からの質問'},cookie)).status,200);
   const answers=(await request('/api/answers')).data.answers;
   assert.equal(answers.length,2);assert.equal(answers.find(a=>a.question===payload.question).answer,'更新した回答');
-  for(const a of answers)assert.deepEqual(Object.keys(a).sort(),['answer','category','id','publishedAt','question']);
+  for(const a of answers)assert.deepEqual(Object.keys(a).sort(),['answer','category','editedAt','id','publishedAt','question']);
   assert.equal((await request('/api/state')).data.total,1);
   assert.equal((await request('/api/admin',{...payload,questionId:randomUUID()},cookie)).status,404);
 });
